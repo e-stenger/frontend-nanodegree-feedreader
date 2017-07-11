@@ -75,6 +75,7 @@ $(function() {
         });
     });	
     /* TODO: Write a new test suite named "Initial Entries" */
+    describe('Initial Entries', function () {
 
         /* TODO: Write a test that ensures when the loadFeed
          * function is called and completes its work, there is at least
@@ -82,11 +83,36 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+         beforeEach(function(done) {
+         	loadFeed(0, done);
+         })
+
+         it('has .entry elem in the .feed container', function () {
+         	expect($('.feed .entry').length).toBeGreaterThan(0);
+     	})
+     });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
-
+    describe('New Feed Selection', function() {
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+         var feedContents;
+         beforeEach(function(done) {
+         	loadFeed(0, function() {
+         		feedContents = $('.feed').html();
+         		//console.log(feedContents);
+         		done();
+         	});
+         });
+         it('changes content', function(done) {
+         	loadFeed(1, function () {
+         		newFeedContents = $('.feed').html();
+         		expect(newFeedContents).not.toEqual(feedContents);
+         		//console.log(newFeedContents);
+         		done();
+         	});
+         });
+    });
 }());
