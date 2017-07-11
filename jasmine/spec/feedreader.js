@@ -68,9 +68,9 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
         it('changes visibility when clicked', function() {
-        	$('menu-icon-link').click();
+        	$('.menu-icon-link').click();
         	expect($('body').hasClass('menu-hidden')).toBe(false);
-        	$('menu-icon-link').click();
+        	$('.menu-icon-link').click();
         	expect($('body').hasClass('menu-hidden')).toBe(true);
         });
     });	
