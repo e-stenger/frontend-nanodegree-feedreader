@@ -85,11 +85,11 @@ $(function() {
          */
          beforeEach(function(done) {
          	loadFeed(0, done);
-         })
+         });
 
          it('has .entry elem in the .feed container', function () {
          	expect($('.feed .entry').length).toBeGreaterThan(0);
-     	})
+     	});
      });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
